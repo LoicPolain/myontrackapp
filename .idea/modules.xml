@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/myontrackapp.iml" filepath="$PROJECT_DIR$/.idea/myontrackapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/myontrackapp-common.iml" filepath="$PROJECT_DIR$/common/myontrackapp-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javase/myontrackapp-javase.iml" filepath="$PROJECT_DIR$/javase/myontrackapp-javase.iml" />
+    </modules>
+  </component>
+</project>
