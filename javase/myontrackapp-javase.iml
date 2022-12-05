@@ -14,6 +14,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="myontrackapp-common" />
+    <orderEntry type="library" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
     <orderEntry type="module" module-name="myontrackapp-common" scope="TEST" production-on-test="" />
     <orderEntry type="library" name="Maven: com.codenameone:codenameone-core:7.0.93" level="project" />
     <orderEntry type="library" name="Maven: com.codenameone:codenameone-javase:7.0.93" level="project" />
