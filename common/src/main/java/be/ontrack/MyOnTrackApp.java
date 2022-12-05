@@ -21,7 +21,6 @@ public class MyOnTrackApp extends Lifecycle {
         Button helloButton = new Button("button click here");
         hi.add(helloButton);
 
-
         helloButton.addActionListener(e -> hello());
         hi.getToolbar().addMaterialCommandToSideMenu("Menu item",
         FontImage.MATERIAL_CHECK, 4, e -> hello());
