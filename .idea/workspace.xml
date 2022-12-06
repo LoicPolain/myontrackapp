@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="336d32c5-6f4b-4a8f-b637-9fea310958e7" name="Default Changelist" comment="Feat: added language selector">
+    <list default="true" id="336d32c5-6f4b-4a8f-b637-9fea310958e7" name="Default Changelist" comment="Fix: search results addapt to language">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/be/ontrack/MyOnTrackApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/be/ontrack/MyOnTrackApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/be/ontrack/NMBSData.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/be/ontrack/NMBSData.java" afterDir="false" />
@@ -824,7 +824,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1613589489573</updated>
-      <workItem from="1669992534434" duration="36768000" />
+      <workItem from="1669992534434" duration="37133000" />
     </task>
     <task id="LOCAL-00001" summary="Feat: init">
       <created>1670242903537</created>
@@ -875,7 +875,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670329761061</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fix: search results addapt to language">
+      <created>1670347641948</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1670347641948</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -897,7 +904,8 @@
     <MESSAGE value="Feat: getting nmbs data from irail" />
     <MESSAGE value="Feat: added time and date field" />
     <MESSAGE value="Feat: added language selector" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feat: added language selector" />
+    <MESSAGE value="Fix: search results addapt to language" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix: search results addapt to language" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
