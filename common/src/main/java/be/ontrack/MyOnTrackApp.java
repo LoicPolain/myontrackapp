@@ -1,14 +1,16 @@
 package be.ontrack;
 
-import static com.codename1.ui.CN.*;
-
 import com.codename1.system.Lifecycle;
 import com.codename1.ui.*;
+import com.codename1.ui.events.DataChangedListener;
 import com.codename1.ui.layouts.*;
+import com.codename1.ui.list.DefaultListModel;
+import com.codename1.ui.spinner.Picker;
+import com.codename1.util.StringUtil;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
 
 
 /**
@@ -22,32 +24,63 @@ public class MyOnTrackApp extends Lifecycle {
         Button helloButton = new Button("button click here");
         hi.add(helloButton);
 
-//        NMBSData nmbsData = new NMBSData(AcceptedLanguages.nl);
-//        ArrayList arrayList = (ArrayList) nmbsData.getStations().get("station");
-//        for (Object o: arrayList) {
-//            HashMap hashMap = (HashMap) o;
-//            TextField textField = new TextField(hashMap.get("name").toString());
-//            hi.add(textField);
-//        }
+        ArrayList stationList = new ArrayList<>();
+        NMBSData nmbsData = new NMBSData(AcceptedLanguages.nl);
+        ArrayList arrayList = (ArrayList) nmbsData.getStations().get("station");
+        for (Object o : arrayList) {
+            HashMap hashMap = (HashMap) o;
+            stationList.add(hashMap.get("name").toString());
+        }
 
         Label labelVan = new Label("Van:");
-        TextField textFieldVan = new TextField();
+        DefaultListModel<String> defaultListStations = new DefaultListModel<>();
+        for (Object station:stationList) {
+            String s = (String) station;
+            defaultListStations.addItem(s);
+        }
+        AutoCompleteTextField textFieldVan = new AutoCompleteTextField(defaultListStations);
+
         Label labelNaar = new Label("Naar:");
-        TextField textFieldNaar = new TextField();
+        AutoCompleteTextField textFieldNaar = new AutoCompleteTextField(defaultListStations);
+
         Button buttonSearch = new Button("Search");
         hi.add(labelVan);
         hi.add(textFieldVan);
         hi.add(labelNaar);
         hi.add(textFieldNaar);
-        hi.add(buttonSearch);
 
-        textFieldVan.addActionListener();
+
+        textFieldVan.addDataChangedListener(new DataChangedListener() {
+            @Override
+            public void dataChanged(int i, int i1) {
+                String stationInput = textFieldVan.getText();
+                if (!stationInput.isEmpty()){
+                    stationInput = StringUtil.replaceFirst(stationInput, textFieldVan.getText().substring(0, 1), textFieldVan.getText().substring(0, 1).toUpperCase());
+                }
+                System.out.println("input: " + stationInput);
+                textFieldVan.setText(stationInput);
+                System.out.println("textfield: " + textFieldVan.getText());
+            }
+        });
+
+        Picker pickerDate = new Picker();
+        pickerDate.setType(Display.PICKER_TYPE_DATE);
+        hi.add(pickerDate);
+        Picker pickerTime = new Picker();
+        pickerTime.setType(Display.PICKER_TYPE_TIME);
+        hi.add(pickerTime);
+
+        Picker pickerLanguage = new Picker();
+        pickerLanguage.setType(Display.PICKER_TYPE_STRINGS);
+        pickerLanguage.setStrings(AcceptedLanguages.nl.toString(), AcceptedLanguages.de.toString(), AcceptedLanguages.fr.toString(), AcceptedLanguages.en.toString());
+        hi.getToolbar().addComponent();
 
 
 
         helloButton.addActionListener(e -> hello());
         hi.getToolbar().addMaterialCommandToSideMenu("Menu item",
                 FontImage.MATERIAL_CHECK, 4, e -> hello());
+        hi.add(buttonSearch);
         hi.show();
     }
 

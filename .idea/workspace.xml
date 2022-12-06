@@ -4,21 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="336d32c5-6f4b-4a8f-b637-9fea310958e7" name="Default Changelist" comment="Feat: init">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/be/ontrack/AcceptedLanguages.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/be/ontrack/NMBSData.java" afterDir="false" />
+    <list default="true" id="336d32c5-6f4b-4a8f-b637-9fea310958e7" name="Default Changelist" comment="Feat: getting nmbs data from irail">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/myontrackapp-common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/common/myontrackapp-common.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/be/ontrack/MyOnTrackApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/be/ontrack/MyOnTrackApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/classes/be/ontrack/MyOnTrackApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/be/ontrack/MyOnTrackApp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/codenameone/simulator.properties" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/codenameone/simulator.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/compliance-check.jar" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/compliance-check.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/myontrackapp-common-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/myontrackapp-common-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javase/myontrackapp-javase.iml" beforeDir="false" afterPath="$PROJECT_DIR$/javase/myontrackapp-javase.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -829,7 +822,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1613589489573</updated>
-      <workItem from="1669992534434" duration="18112000" />
+      <workItem from="1669992534434" duration="26627000" />
     </task>
     <task id="LOCAL-00001" summary="Feat: init">
       <created>1670242903537</created>
@@ -852,7 +845,21 @@
       <option name="project" value="LOCAL" />
       <updated>1670243122894</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Feat: getting nmbs data from irail">
+      <created>1670266717158</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1670266717158</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Feat: getting nmbs data from irail">
+      <created>1670266734273</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1670266734273</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -871,7 +878,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Feat: init" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feat: init" />
+    <MESSAGE value="Feat: getting nmbs data from irail" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat: getting nmbs data from irail" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
