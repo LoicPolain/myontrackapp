@@ -14,10 +14,14 @@ import com.codename1.io.URL;
 public class NMBSData {
     private String urlString = "https://api.irail.be";
 
-    private AcceptedLanguages language;
+    private AcceptedLanguages language = AcceptedLanguages.nl;
 
-    public NMBSData(AcceptedLanguages language) {
+    public void setLanguage(AcceptedLanguages language) {
         this.language = language;
+    }
+
+    public AcceptedLanguages getLanguage() {
+        return language;
     }
 
     public Map<String, Object> getStations(){

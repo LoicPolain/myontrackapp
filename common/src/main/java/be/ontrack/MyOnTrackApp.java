@@ -8,6 +8,7 @@ import com.codename1.ui.list.DefaultListModel;
 import com.codename1.ui.spinner.Picker;
 import com.codename1.util.StringUtil;
 
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -18,37 +19,49 @@ import java.util.HashMap;
  * of building native mobile applications using Java.
  */
 public class MyOnTrackApp extends Lifecycle {
+    private DefaultListModel defaultListStations = new DefaultListModel();
+    private ArrayList stationList = new ArrayList<>();
+    private NMBSData nmbsData = new NMBSData();
+    private AutoCompleteTextField textFieldVan = null;
+    private AutoCompleteTextField textFieldNaar = null;
+
     @Override
     public void runApp() {
         Form hi = new Form("On track", BoxLayout.y());
+
+        getStationsNames();
+        makeDefaultListModel();
+
+
+        Picker pickerLanguage = new Picker();
+        pickerLanguage.setType(Display.PICKER_TYPE_STRINGS);
+        pickerLanguage.setStrings(AcceptedLanguages.nl.toString(), AcceptedLanguages.de.toString(), AcceptedLanguages.fr.toString(), AcceptedLanguages.en.toString());
+        pickerLanguage.setSelectedString(AcceptedLanguages.nl.toString());
+        hi.getToolbar().addComponent(BorderLayout.EAST, pickerLanguage);
+
+
         Button helloButton = new Button("button click here");
         hi.add(helloButton);
 
-        ArrayList stationList = new ArrayList<>();
-        NMBSData nmbsData = new NMBSData(AcceptedLanguages.nl);
-        ArrayList arrayList = (ArrayList) nmbsData.getStations().get("station");
-        for (Object o : arrayList) {
-            HashMap hashMap = (HashMap) o;
-            stationList.add(hashMap.get("name").toString());
-        }
-
         Label labelVan = new Label("Van:");
-        DefaultListModel<String> defaultListStations = new DefaultListModel<>();
-        for (Object station:stationList) {
-            String s = (String) station;
-            defaultListStations.addItem(s);
-        }
-        AutoCompleteTextField textFieldVan = new AutoCompleteTextField(defaultListStations);
+        textFieldVan = new AutoCompleteTextField(defaultListStations);
 
         Label labelNaar = new Label("Naar:");
-        AutoCompleteTextField textFieldNaar = new AutoCompleteTextField(defaultListStations);
+        textFieldNaar = new AutoCompleteTextField(defaultListStations);
 
         Button buttonSearch = new Button("Search");
+
+        pickerLanguage.addActionListener(actionEvent -> {
+            nmbsData.setLanguage(AcceptedLanguages.valueOf(pickerLanguage.getText()));
+            System.out.println("language: " + nmbsData.getLanguage());
+            getStationsNames();
+            makeDefaultListModel();
+        });
+
         hi.add(labelVan);
         hi.add(textFieldVan);
         hi.add(labelNaar);
         hi.add(textFieldNaar);
-
 
         textFieldVan.addDataChangedListener(new DataChangedListener() {
             @Override
@@ -68,22 +81,32 @@ public class MyOnTrackApp extends Lifecycle {
         hi.add(pickerDate);
         Picker pickerTime = new Picker();
         pickerTime.setType(Display.PICKER_TYPE_TIME);
+        pickerTime.setTime(new Date());
         hi.add(pickerTime);
-
-        Picker pickerLanguage = new Picker();
-        pickerLanguage.setType(Display.PICKER_TYPE_STRINGS);
-        pickerLanguage.setStrings(AcceptedLanguages.nl.toString(), AcceptedLanguages.de.toString(), AcceptedLanguages.fr.toString(), AcceptedLanguages.en.toString());
-        pickerLanguage.setSelectedString(AcceptedLanguages.nl.toString());
-        hi.getToolbar().addComponent(BorderLayout.EAST, pickerLanguage);
-
-
-
 
         helloButton.addActionListener(e -> hello());
         hi.getToolbar().addMaterialCommandToSideMenu("Menu item",
                 FontImage.MATERIAL_CHECK, 4, e -> hello());
         hi.add(buttonSearch);
         hi.show();
+    }
+
+    private void getStationsNames() {
+        ArrayList arrayList = (ArrayList) nmbsData.getStations().get("station");
+        stationList.clear();
+        for (Object o : arrayList) {
+            HashMap hashMap = (HashMap) o;
+            stationList.add(hashMap.get("name").toString());
+        }
+    }
+
+
+    private void makeDefaultListModel() {
+        defaultListStations.removeAll();
+        for (Object station:stationList) {
+            String s = (String) station;
+            defaultListStations.addItem(s);
+        }
     }
 
     private void hello() {
