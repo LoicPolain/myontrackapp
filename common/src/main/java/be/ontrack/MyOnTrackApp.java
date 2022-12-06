@@ -1,11 +1,15 @@
 package be.ontrack;
 
+import com.codename1.components.Accordion;
+import com.codename1.components.SpanLabel;
 import com.codename1.system.Lifecycle;
 import com.codename1.ui.*;
+import com.codename1.ui.animations.Transition;
 import com.codename1.ui.events.DataChangedListener;
 import com.codename1.ui.layouts.*;
 import com.codename1.ui.list.DefaultListModel;
 import com.codename1.ui.spinner.Picker;
+import com.codename1.util.DateUtil;
 import com.codename1.util.StringUtil;
 
 
@@ -81,13 +85,45 @@ public class MyOnTrackApp extends Lifecycle {
         hi.add(pickerDate);
         Picker pickerTime = new Picker();
         pickerTime.setType(Display.PICKER_TYPE_TIME);
-        pickerTime.setTime(new Date());
         hi.add(pickerTime);
 
         helloButton.addActionListener(e -> hello());
         hi.getToolbar().addMaterialCommandToSideMenu("Menu item",
                 FontImage.MATERIAL_CHECK, 4, e -> hello());
         hi.add(buttonSearch);
+
+
+        buttonSearch.addActionListener(actionEvent -> {
+            String date = "0" + StringUtil.replaceAll(pickerDate.getText(), "/", "");
+            if (date.length() > 8){
+                date = StringUtil.replaceFirst(date, "0", "");
+            }
+            date = date.substring(0, 4) + date.substring(6, 8);
+            String time = StringUtil.replaceAll(pickerTime.getText(), ":", "");;
+
+            ArrayList arrayListConn = (ArrayList) nmbsData.getTrainConn(textFieldVan.getText(), textFieldNaar.getText(), date, time).get("connection");
+            for (Object oConn : arrayListConn) {
+                HashMap hashMapConn = (HashMap) oConn;
+                HashMap hashMapDep = (HashMap) hashMapConn.get("departure");
+                HashMap hashMapStops = (HashMap) hashMapDep.get("stops");
+                ComponentGroup cg = new ComponentGroup();
+                Label labelOverstaps = new Label("Overstappen: " + hashMapStops.get("number"));
+                cg.add(labelOverstaps);
+
+                Accordion accordion = new Accordion();
+                accordion.addContent(hashMapDep.get("time").toString(), cg);
+                hi.add(accordion);
+            }
+
+            for (Component c:hi.getContentPane().getChildrenAsList(false)) {
+                if (c.getClass().getSimpleName().equals("Accordion")){
+                    c.remove();
+                }
+            }
+
+            hi.refreshTheme();
+        });
+        hi.setScrollableX(true);
         hi.show();
     }
 
@@ -99,7 +135,6 @@ public class MyOnTrackApp extends Lifecycle {
             stationList.add(hashMap.get("name").toString());
         }
     }
-
 
     private void makeDefaultListModel() {
         defaultListStations.removeAll();

@@ -29,22 +29,14 @@ public class NMBSData {
         return stream(generateUrl(urlsations));
     }
 
-    public URL getStations2(){
-        String urlsations = urlString.concat("/stations/?format=json&lang=" + language);
-        return generateUrl(urlsations);
-    }
-
-    public String test(){
-        String liveboardUrl = urlString.concat("/liveboard/");
-        String s = "/liveboard/?station=Gent-Sint-Pieters&date=300917&time=1230&arrdep=departure&lang=en&format=json&alerts=false";
-
-        return urlString;
+    public Map<String, Object> getTrainConn(String from, String to, String date, String time){
+        String urlTrainConn = urlString.concat("/connections/?from=" + from + "&to=" + to + "&date=" + date + "&time=" + time + "&timesel=departure&format=json&lang=" + language + "&typeOfTransport=automatic&alerts=false&results=5");
+        return stream(generateUrl(urlTrainConn));
     }
 
     private Map<String, Object> stream(URL url) {
         try (InputStream input = url.openStream()) {
             JSONParser jsonParser = new JSONParser();
-
             return jsonParser.parseJSON(new InputStreamReader(input));
         } catch (IOException e) {
             throw new RuntimeException(e);

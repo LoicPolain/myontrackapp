@@ -824,7 +824,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1613589489573</updated>
-      <workItem from="1669992534434" duration="37133000" />
+      <workItem from="1669992534434" duration="47131000" />
     </task>
     <task id="LOCAL-00001" summary="Feat: init">
       <created>1670242903537</created>
@@ -882,7 +882,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670347641948</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Fix: search results addapt to language">
+      <created>1670347657921</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1670347657921</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
