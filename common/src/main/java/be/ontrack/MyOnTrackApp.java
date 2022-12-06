@@ -73,7 +73,9 @@ public class MyOnTrackApp extends Lifecycle {
         Picker pickerLanguage = new Picker();
         pickerLanguage.setType(Display.PICKER_TYPE_STRINGS);
         pickerLanguage.setStrings(AcceptedLanguages.nl.toString(), AcceptedLanguages.de.toString(), AcceptedLanguages.fr.toString(), AcceptedLanguages.en.toString());
-        hi.getToolbar().addComponent();
+        pickerLanguage.setSelectedString(AcceptedLanguages.nl.toString());
+        hi.getToolbar().addComponent(BorderLayout.EAST, pickerLanguage);
+
 
 
 
