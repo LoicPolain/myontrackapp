@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="336d32c5-6f4b-4a8f-b637-9fea310958e7" name="Default Changelist" comment="Final changes">
+    <list default="true" id="336d32c5-6f4b-4a8f-b637-9fea310958e7" name="Default Changelist" comment="fix: setFieldsIncomplete();">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/classes/be/ontrack/LanguageElementsName$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/be/ontrack/LanguageElementsName$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/classes/be/ontrack/LanguageElementsName.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/be/ontrack/LanguageElementsName.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/codenameone/simulator.properties" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/codenameone/simulator.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/compliance-check.jar" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/compliance-check.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/myontrackapp-common-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/myontrackapp-common-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -819,7 +823,7 @@
       <updated>1613589489573</updated>
       <workItem from="1669992534434" duration="60731000" />
       <workItem from="1670419544427" duration="653000" />
-      <workItem from="1670420235664" duration="14384000" />
+      <workItem from="1670420235664" duration="16052000" />
     </task>
     <task id="LOCAL-00001" summary="Feat: init">
       <created>1670242903537</created>
@@ -912,7 +916,21 @@
       <option name="project" value="LOCAL" />
       <updated>1670438339966</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Final changes">
+      <created>1670438395941</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1670438395941</updated>
+    </task>
+    <task id="LOCAL-00015" summary="fix: setFieldsIncomplete();">
+      <created>1670438476251</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1670438476251</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -939,7 +957,8 @@
     <MESSAGE value="Fix: language: components text change when selecting language" />
     <MESSAGE value="Fix: search results" />
     <MESSAGE value="Final changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final changes" />
+    <MESSAGE value="fix: setFieldsIncomplete();" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: setFieldsIncomplete();" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
