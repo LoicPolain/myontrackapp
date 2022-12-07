@@ -5,7 +5,6 @@ import com.codename1.components.SpanLabel;
 import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.system.Lifecycle;
 import com.codename1.ui.*;
-import com.codename1.ui.animations.Transition;
 import com.codename1.ui.events.DataChangedListener;
 import com.codename1.ui.layouts.*;
 import com.codename1.ui.list.DefaultListModel;
@@ -17,7 +16,7 @@ import com.codename1.util.StringUtil;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
+
 
 
 /**
@@ -38,16 +37,11 @@ public class MyOnTrackApp extends Lifecycle {
         getStationsNames();
         makeDefaultListModel();
 
-
         Picker pickerLanguage = new Picker();
         pickerLanguage.setType(Display.PICKER_TYPE_STRINGS);
         pickerLanguage.setStrings(AcceptedLanguages.nl.toString(), AcceptedLanguages.de.toString(), AcceptedLanguages.fr.toString(), AcceptedLanguages.en.toString());
         pickerLanguage.setSelectedString(AcceptedLanguages.nl.toString());
         hi.getToolbar().addComponent(BorderLayout.EAST, pickerLanguage);
-
-
-        Button helloButton = new Button("button click here");
-        hi.add(helloButton);
 
         Label labelVan = new Label(languageElementsName.getVan());
         textFieldVan = new AutoCompleteTextField(defaultListStations);
@@ -93,53 +87,84 @@ public class MyOnTrackApp extends Lifecycle {
         pickerTime.setType(Display.PICKER_TYPE_TIME);
         pickerTime.setHourRange(0, 23);
         pickerTime.setMinuteStep(5);
+        Date currentdate = new Date();
+        SimpleDateFormat sdfCurrentDate = new SimpleDateFormat("HH:mm");
+        pickerTime.setText(sdfCurrentDate.format(currentdate));
         hi.add(pickerTime);
 
-        helloButton.addActionListener(e -> hello());
+/*        helloButton.addActionListener(e -> hello());
         hi.getToolbar().addMaterialCommandToSideMenu("Menu item",
-                FontImage.MATERIAL_CHECK, 4, e -> hello());
+                FontImage.MATERIAL_CHECK, 4, e -> hello());*/
         hi.add(buttonSearch);
 
-
         buttonSearch.addActionListener(actionEvent -> {
-            for (Component c:hi.getContentPane().getChildrenAsList(false)) {
-                if (c.getClass().getSimpleName().equals("Accordion")){
-                    c.remove();
-                }
-            }
-
-            String date = "0" + StringUtil.replaceAll(pickerDate.getText(), "/", "");
-            if (date.length() > 8){
-                date = StringUtil.replaceFirst(date, "0", "");
-            }
-            date = date.substring(0, 4) + date.substring(6, 8);
-            String time = StringUtil.replaceAll(pickerTime.getText(), ":", "");;
-
-            ArrayList arrayListConn = (ArrayList) nmbsData.getTrainConn(textFieldVan.getText(), textFieldNaar.getText(), date, time).get("connection");
-            for (Object oConn : arrayListConn) {
-                HashMap hashMapConn = (HashMap) oConn;
-                HashMap hashMapDep = (HashMap) hashMapConn.get("departure");
-                HashMap hashMapStops = (HashMap) hashMapDep.get("stops");
-                ComponentGroup cg = new ComponentGroup();
-                if (hashMapStops != null){
-                    Label numberOfStops = new Label("Stops: " + hashMapStops.get("number"));
-                    cg.add(numberOfStops);
+            if (!textFieldVan.getText().isEmpty() && !textFieldNaar.getText().isEmpty() && stationList.contains(textFieldVan.getText()) && stationList.contains(textFieldNaar.getText())){
+                for (Component c:hi.getContentPane().getChildrenAsList(false)) {
+                    if (c.getClass().getSimpleName().equals("Accordion")){
+                        c.remove();
+                    }
                 }
 
+                String date = "0" + StringUtil.replaceAll(pickerDate.getText(), "/", "");
+                if (date.length() > 8){
+                    date = StringUtil.replaceFirst(date, "0", "");
+                }
+                date = date.substring(0, 4) + date.substring(6, 8);
+                String time = StringUtil.replaceAll(pickerTime.getText(), ":", "");;
 
-                Accordion accordion = new Accordion();
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
-                Long epoch = Long.parseLong(hashMapDep.get("time").toString())*1000;
-                Label labelTime = new Label(simpleDateFormat.format(epoch));
-                Label labelSpoor = new Label(languageElementsName.getSpoor() + hashMapDep.get("platform"));
-                ComponentGroup cgShortInfo = new ComponentGroup();
-                cgShortInfo.add(labelTime).add(labelSpoor);
-                accordion.addContent(cgShortInfo, cg);
-                accordion.setScrollableY(false);
-                hi.add(accordion);
+                ArrayList arrayListConn = (ArrayList) nmbsData.getTrainConn(textFieldVan.getText(), textFieldNaar.getText(), date, time).get("connection");
+                for (Object oConn : arrayListConn) {
+                    System.out.println(oConn);
+                    HashMap hashMapConn = (HashMap) oConn;
+                    HashMap hashMapDep = (HashMap) hashMapConn.get("departure");
+                    HashMap hashMapStops = (HashMap) hashMapDep.get("stops");
+
+
+                    Long epoch = Long.parseLong(hashMapDep.get("time").toString())*1000;
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+
+                    ComponentGroup cg = new ComponentGroup();
+                    ComponentGroup cgShortInfo = new ComponentGroup();
+
+                    Label labelTime = new Label(simpleDateFormat.format(epoch));
+                    Label labelSpoor = new Label(languageElementsName.getSpoor() + hashMapDep.get("platform"));
+                    cgShortInfo.add(labelTime).add(labelSpoor);
+
+                    Label from = new Label(languageElementsName.getVan() + textFieldVan.getText());
+                    Label to = new Label(languageElementsName.getNaar() + textFieldNaar.getText());
+                    cg.add(from);
+                    if (hashMapStops != null){
+                        Label numberOfStops = new Label("Stops: " + hashMapStops.get("number"));
+                        cg.add(numberOfStops);
+                        ArrayList tussenStops = (ArrayList) hashMapStops.get("stop");
+                        for (Object tsStopsStation:tussenStops) {
+                            HashMap hashMapTussenStops = (HashMap) tsStopsStation;
+                            Label labelTsStations = new Label(hashMapTussenStops.get("station").toString());
+                            cg.add(labelTsStations);
+                        }
+                    }
+                    if (hashMapConn.containsKey("vias")){
+                        HashMap hashMapVias = (HashMap) hashMapConn.get("vias");
+                        ArrayList vias = (ArrayList) hashMapVias.get("via");
+                        for (Object via:vias) {
+                            HashMap hashMapvia = (HashMap) via;
+                        }
+                        Label labelTussenStops = new Label(languageElementsName.getOverstappen() + vias.size());
+                        cgShortInfo.add(labelTussenStops);
+                    }
+                    cg.add(to);
+
+                    Accordion accordion = new Accordion();
+                    accordion.addContent(cgShortInfo, cg);
+                    accordion.setScrollableY(false);
+                    hi.add(accordion);
+                }
+                hi.refreshTheme();
+            }else {
+                errorFieldsIncomplete();
             }
-            hi.refreshTheme();
         });
+
         hi.setScrollableX(true);
         hi.show();
     }
@@ -161,8 +186,7 @@ public class MyOnTrackApp extends Lifecycle {
         }
     }
 
-    private void hello() {
-        Dialog.show("Hello Codename One", "Welcome to Codename One", "OK", null);
+    private void errorFieldsIncomplete() {
+        Dialog.show("Error", languageElementsName.getFieldsIncomplete(), "OK", null);
     }
-
 }

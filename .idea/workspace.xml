@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="336d32c5-6f4b-4a8f-b637-9fea310958e7" name="Default Changelist" comment="Fix: language: components text change when selecting language">
+    <list default="true" id="336d32c5-6f4b-4a8f-b637-9fea310958e7" name="Default Changelist" comment="Fix: search results">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/codenameone_settings.properties" beforeDir="false" afterPath="$PROJECT_DIR$/common/codenameone_settings.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/be/ontrack/LanguageElementsName.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/be/ontrack/LanguageElementsName.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/be/ontrack/MyOnTrackApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/be/ontrack/MyOnTrackApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/be/ontrack/NMBSData.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/be/ontrack/NMBSData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/classes/be/ontrack/MyOnTrackApp$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/be/ontrack/MyOnTrackApp$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/classes/be/ontrack/MyOnTrackApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/be/ontrack/MyOnTrackApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/classes/be/ontrack/NMBSData.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/be/ontrack/NMBSData.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/codenameone/simulator.properties" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/codenameone/simulator.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/compliance-check.jar" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/compliance-check.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/myontrackapp-common-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/myontrackapp-common-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,12 +63,12 @@
   "keyToString": {
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/loicp/IdeaProjects/Java_Advanced/Short_Burst_Project/myontrackapp",
+    "last_opened_file_path": "C:/Users/loicp/IdeaProjects/Java_Advanced/Short_Burst_Project/testing",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.editor"
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
 }]]></component>
   <component name="RunManager" selected="Maven.Run in Simulator">
@@ -825,7 +824,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1613589489573</updated>
-      <workItem from="1669992534434" duration="59840000" />
+      <workItem from="1669992534434" duration="60731000" />
+      <workItem from="1670419544427" duration="653000" />
+      <workItem from="1670420235664" duration="14070000" />
     </task>
     <task id="LOCAL-00001" summary="Feat: init">
       <created>1670242903537</created>
@@ -904,7 +905,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670410722407</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Fix: search results">
+      <created>1670418718747</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1670418718747</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -929,7 +937,8 @@
     <MESSAGE value="Fix: search results addapt to language" />
     <MESSAGE value="Feat: added getTrainConnections" />
     <MESSAGE value="Fix: language: components text change when selecting language" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix: language: components text change when selecting language" />
+    <MESSAGE value="Fix: search results" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix: search results" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

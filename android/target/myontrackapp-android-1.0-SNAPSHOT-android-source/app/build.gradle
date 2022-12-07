@@ -1,0 +1,90 @@
+apply plugin: 'com.android.application'
+
+buildscript {
+    repositories {
+      google()
+     jcenter()
+     mavenLocal()
+      mavenCentral()
+      google()
+     mavenLocal()
+      mavenCentral()
+    }
+    dependencies {
+classpath 'com.android.tools.build:gradle:4.1.1'
+    }
+}
+
+android {
+
+    compileSdkVersion 33
+
+    dexOptions {
+        preDexLibraries = false
+        incremental false
+        jumboMode = true
+        javaMaxHeapSize "3g"
+    }
+    defaultConfig {
+        applicationId "be.ontrack"
+        minSdkVersion 15
+        targetSdkVersion 33
+        versionCode 100
+        versionName "1.0"
+    }
+    sourceSets {
+        main {
+            aidl.srcDirs = ['src/main/java']
+        }
+    }
+
+    lintOptions {
+        lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        }
+    }
+    signingConfigs {
+        release {
+            storeFile file("keyStore")
+            storePassword "password"
+            keyAlias "androidKey"
+            keyPassword "password"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard.cfg'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+repositories {
+    google()
+    jcenter()
+      google()
+     mavenLocal()
+      mavenCentral()
+    flatDir{
+              dirs 'libs'
+       }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+     implementation 'androidx.appcompat:appcompat:1.0.0'
+
+ implementation 'com.google.android.gms:play-services-auth:12.0.1'
+ implementation 'com.google.android.gms:play-services-base:12.0.1'
+ implementation 'com.google.android.gms:play-services-analytics:12.0.1'
+ implementation 'com.google.android.gms:play-services-gcm:12.0.1'
+ implementation 'com.google.android.gms:play-services-location:12.0.1'
+ implementation 'com.google.android.gms:play-services-maps:12.0.1'
+ implementation 'com.google.android.gms:play-services-ads:12.0.1'
+}

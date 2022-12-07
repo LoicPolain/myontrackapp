@@ -6,6 +6,9 @@ public class LanguageElementsName {
     private String naar = "Naar:";
     private String zoek = "Zoek";
     private String spoor = "Spoor:";
+    private String overstappen = "Overstappen:";
+
+    private String fieldsIncomplete = "Gelieve alle velden correct in te vullen!";
 
     public LanguageElementsName(AcceptedLanguages currentLang) {
         this.currentLang = currentLang;
@@ -13,6 +16,7 @@ public class LanguageElementsName {
         setNaar();
         setZoek();
         setSpoor();
+        setOverstappen();
 
     }
 
@@ -26,6 +30,7 @@ public class LanguageElementsName {
         setNaar();
         setZoek();
         setSpoor();
+        setOverstappen();
     }
 
     public String getVan() {
@@ -110,7 +115,7 @@ public class LanguageElementsName {
                 this.spoor = "Plattform:";
                 break;
             case en:
-                this.spoor = "Plattform:";
+                this.spoor = "Platform:";
                 break;
             case fr:
                 this.spoor = "Voie:";
@@ -120,6 +125,54 @@ public class LanguageElementsName {
                 break;
             default:
                 this.spoor = "Spoor:";
+                break;
+        }
+    }
+
+    public String getOverstappen() {
+        return overstappen;
+    }
+
+    public void setOverstappen() {
+        switch (currentLang){
+            case de:
+                this.overstappen = "Korrespondenz:";
+                break;
+            case en:
+                this.overstappen = "Connections:";
+                break;
+            case fr:
+                this.overstappen = "Correspondances:";
+                break;
+            case nl:
+                this.overstappen = "Overstappen:";
+                break;
+            default:
+                this.overstappen = "Overstappen:";
+                break;
+        }
+    }
+
+    public String getFieldsIncomplete() {
+        return fieldsIncomplete;
+    }
+
+    public void setFieldsIncomplete() {
+        switch (currentLang){
+            case de:
+                this.fieldsIncomplete = "Bitte füllen Sie alle Felder korrekt aus!";
+                break;
+            case en:
+                this.fieldsIncomplete = "Please fill in all fields correctly!";
+                break;
+            case fr:
+                this.fieldsIncomplete = "Veuillez remplir tous les champs correctement!";
+                break;
+            case nl:
+                this.fieldsIncomplete = "Gelieve alle velden correct in te vullen!";
+                break;
+            default:
+                this.fieldsIncomplete = "Gelieve alle velden correct in te vullen!";
                 break;
         }
     }
