@@ -17,7 +17,7 @@ public class LanguageElementsName {
         setZoek();
         setSpoor();
         setOverstappen();
-
+        setFieldsIncomplete();
     }
 
     public AcceptedLanguages getCurrentLang() {
@@ -31,6 +31,7 @@ public class LanguageElementsName {
         setZoek();
         setSpoor();
         setOverstappen();
+        setFieldsIncomplete();
     }
 
     public String getVan() {
