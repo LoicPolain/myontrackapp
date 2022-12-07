@@ -91,6 +91,8 @@ public class MyOnTrackApp extends Lifecycle {
         hi.add(pickerDate);
         Picker pickerTime = new Picker();
         pickerTime.setType(Display.PICKER_TYPE_TIME);
+        pickerTime.setHourRange(0, 23);
+        pickerTime.setMinuteStep(5);
         hi.add(pickerTime);
 
         helloButton.addActionListener(e -> hello());
@@ -119,13 +121,21 @@ public class MyOnTrackApp extends Lifecycle {
                 HashMap hashMapDep = (HashMap) hashMapConn.get("departure");
                 HashMap hashMapStops = (HashMap) hashMapDep.get("stops");
                 ComponentGroup cg = new ComponentGroup();
-                Label labelOverstaps = new Label("Stops: " + hashMapStops.get("number"));
-                cg.add(labelOverstaps);
+                if (hashMapStops != null){
+                    Label numberOfStops = new Label("Stops: " + hashMapStops.get("number"));
+                    cg.add(numberOfStops);
+                }
+
 
                 Accordion accordion = new Accordion();
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
                 Long epoch = Long.parseLong(hashMapDep.get("time").toString())*1000;
-                accordion.addContent(simpleDateFormat.format(epoch) + "\t\t\t" + languageElementsName.getSpoor() + hashMapDep.get("platform"), cg);
+                Label labelTime = new Label(simpleDateFormat.format(epoch));
+                Label labelSpoor = new Label(languageElementsName.getSpoor() + hashMapDep.get("platform"));
+                ComponentGroup cgShortInfo = new ComponentGroup();
+                cgShortInfo.add(labelTime).add(labelSpoor);
+                accordion.addContent(cgShortInfo, cg);
+                accordion.setScrollableY(false);
                 hi.add(accordion);
             }
             hi.refreshTheme();
