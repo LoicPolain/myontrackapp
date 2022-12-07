@@ -45,6 +45,7 @@ public class NMBSData {
 
     private URL generateUrl(String url){
         try {
+            System.out.println(url);
             return new URL(url);
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);

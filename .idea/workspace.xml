@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="336d32c5-6f4b-4a8f-b637-9fea310958e7" name="Default Changelist" comment="Fix: search results addapt to language">
+    <list default="true" id="336d32c5-6f4b-4a8f-b637-9fea310958e7" name="Default Changelist" comment="Feat: added getTrainConnections">
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/be/ontrack/LanguageElementsName.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/be/ontrack/MyOnTrackApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/be/ontrack/MyOnTrackApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/be/ontrack/NMBSData.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/be/ontrack/NMBSData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/classes/be/ontrack/MyOnTrackApp$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/be/ontrack/MyOnTrackApp$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/classes/be/ontrack/MyOnTrackApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/be/ontrack/MyOnTrackApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/classes/be/ontrack/NMBSData.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/be/ontrack/NMBSData.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/codenameone/simulator.properties" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/codenameone/simulator.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/compliance-check.jar" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/compliance-check.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/myontrackapp-common-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/myontrackapp-common-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -824,7 +823,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1613589489573</updated>
-      <workItem from="1669992534434" duration="47131000" />
+      <workItem from="1669992534434" duration="54418000" />
     </task>
     <task id="LOCAL-00001" summary="Feat: init">
       <created>1670242903537</created>
@@ -889,7 +888,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670347657921</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Feat: added getTrainConnections">
+      <created>1670361195476</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1670361195476</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -912,7 +918,8 @@
     <MESSAGE value="Feat: added time and date field" />
     <MESSAGE value="Feat: added language selector" />
     <MESSAGE value="Fix: search results addapt to language" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix: search results addapt to language" />
+    <MESSAGE value="Feat: added getTrainConnections" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat: added getTrainConnections" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

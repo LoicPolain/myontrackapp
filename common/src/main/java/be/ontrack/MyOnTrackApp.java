@@ -2,6 +2,7 @@ package be.ontrack;
 
 import com.codename1.components.Accordion;
 import com.codename1.components.SpanLabel;
+import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.system.Lifecycle;
 import com.codename1.ui.*;
 import com.codename1.ui.animations.Transition;
@@ -16,6 +17,7 @@ import com.codename1.util.StringUtil;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 
 
 /**
@@ -28,7 +30,7 @@ public class MyOnTrackApp extends Lifecycle {
     private NMBSData nmbsData = new NMBSData();
     private AutoCompleteTextField textFieldVan = null;
     private AutoCompleteTextField textFieldNaar = null;
-
+    private LanguageElementsName languageElementsName = new LanguageElementsName(AcceptedLanguages.nl);
     @Override
     public void runApp() {
         Form hi = new Form("On track", BoxLayout.y());
@@ -47,19 +49,23 @@ public class MyOnTrackApp extends Lifecycle {
         Button helloButton = new Button("button click here");
         hi.add(helloButton);
 
-        Label labelVan = new Label("Van:");
+        Label labelVan = new Label(languageElementsName.getVan());
         textFieldVan = new AutoCompleteTextField(defaultListStations);
 
-        Label labelNaar = new Label("Naar:");
+        Label labelNaar = new Label(languageElementsName.getNaar());
         textFieldNaar = new AutoCompleteTextField(defaultListStations);
 
-        Button buttonSearch = new Button("Search");
+        Button buttonSearch = new Button(languageElementsName.getZoek());
 
         pickerLanguage.addActionListener(actionEvent -> {
             nmbsData.setLanguage(AcceptedLanguages.valueOf(pickerLanguage.getText()));
-            System.out.println("language: " + nmbsData.getLanguage());
+            languageElementsName.setCurrentLang(AcceptedLanguages.valueOf(pickerLanguage.getText()));
+            labelVan.setText(languageElementsName.getVan());
+            labelNaar.setText(languageElementsName.getNaar());
+            buttonSearch.setText(languageElementsName.getZoek());
             getStationsNames();
             makeDefaultListModel();
+            hi.refreshTheme(true);
         });
 
         hi.add(labelVan);
@@ -94,6 +100,12 @@ public class MyOnTrackApp extends Lifecycle {
 
 
         buttonSearch.addActionListener(actionEvent -> {
+            for (Component c:hi.getContentPane().getChildrenAsList(false)) {
+                if (c.getClass().getSimpleName().equals("Accordion")){
+                    c.remove();
+                }
+            }
+
             String date = "0" + StringUtil.replaceAll(pickerDate.getText(), "/", "");
             if (date.length() > 8){
                 date = StringUtil.replaceFirst(date, "0", "");
@@ -107,20 +119,15 @@ public class MyOnTrackApp extends Lifecycle {
                 HashMap hashMapDep = (HashMap) hashMapConn.get("departure");
                 HashMap hashMapStops = (HashMap) hashMapDep.get("stops");
                 ComponentGroup cg = new ComponentGroup();
-                Label labelOverstaps = new Label("Overstappen: " + hashMapStops.get("number"));
+                Label labelOverstaps = new Label("Stops: " + hashMapStops.get("number"));
                 cg.add(labelOverstaps);
 
                 Accordion accordion = new Accordion();
-                accordion.addContent(hashMapDep.get("time").toString(), cg);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+                Long epoch = Long.parseLong(hashMapDep.get("time").toString())*1000;
+                accordion.addContent(simpleDateFormat.format(epoch) + "\t\t\t" + languageElementsName.getSpoor() + hashMapDep.get("platform"), cg);
                 hi.add(accordion);
             }
-
-            for (Component c:hi.getContentPane().getChildrenAsList(false)) {
-                if (c.getClass().getSimpleName().equals("Accordion")){
-                    c.remove();
-                }
-            }
-
             hi.refreshTheme();
         });
         hi.setScrollableX(true);
